@@ -34,6 +34,7 @@ class GFAlertVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        self.configureBlurEffect()
         self.configureContainerView()
         self.configureTitleLabel()
         self.configureActionButton()
@@ -42,6 +43,14 @@ class GFAlertVC: UIViewController {
     
     @objc private func dismissVC() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func configureBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = self.view.bounds
+        blurredEffectView.alpha = 0.75
+        self.view.addSubview(blurredEffectView)
     }
     
     private func configureContainerView() {
