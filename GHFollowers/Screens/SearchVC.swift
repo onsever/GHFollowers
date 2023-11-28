@@ -29,7 +29,7 @@ class SearchVC: UIViewController {
     // Hiding the navigation bar. (viewDidLoad doesn't get called when we go back in the navigation stack, but viewWillAppear gets called.)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     // Whenever we click somewhere on the super view, we will dismiss the keyboard.
