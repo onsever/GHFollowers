@@ -18,6 +18,10 @@ class GFTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc private func dismissKeyboard() {
+        self.resignFirstResponder()
+    }
+    
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -38,10 +42,29 @@ class GFTextField: UITextField {
         
         self.backgroundColor = .tertiarySystemBackground
         self.autocorrectionType = .no
+        self.autocapitalizationType = .none
+        self.smartDashesType = .no
+        self.smartInsertDeleteType = .no
+        self.smartQuotesType = .no
+        self.spellCheckingType = .no
         self.keyboardType = .default
         self.returnKeyType = .go
         
         self.placeholder = "Enter a username"
+        
+        self.inputAccessoryView = self.configureToolbar()
+    }
+    
+    private func configureToolbar() -> UIToolbar {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        toolbar.barStyle = .default
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
+        
+        toolbar.items = [flexibleSpace, doneButton]
+        toolbar.sizeToFit()
+        
+        return toolbar
     }
 
 }
