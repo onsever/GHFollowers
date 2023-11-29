@@ -16,12 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Configuration for Programmatic UI.
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        configureNavigationBar()
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = createTabBarController()
         window?.makeKeyAndVisible()
-        
-        configureNavigationBar()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
