@@ -5,11 +5,13 @@
 //  Created by Onurcan Sever on 2023-11-27.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
     private let baseURL = "https://api.github.com/users/"
+    // This is a cache that stores images in memory. Cache will improve the performance as well as prevents the app from downloading the same image over and over again. (We only want single instance of the cache.)
+    let cache = NSCache<NSString, UIImage>()
     
     private init() {}
     /*
